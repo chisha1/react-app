@@ -2,12 +2,15 @@
   "name": "nextjs-with-material-ui-styled-components",
   "version": "1.0.0",
   "dependencies": {
+    "@fullhuman/postcss-purgecss": "2.2.0",
     "@material-ui/core": "latest",
     "next": "latest",
+    "postcss-preset-env": "^6.7.0",
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "styled-components": "latest"
+    "styled-components": "latest",
+    "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
     "babel-plugin-styled-components": "latest"

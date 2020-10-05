@@ -1,6 +1,7 @@
 import React from 'react';
 import App from 'next/app';
 import Head from 'next/head';
+import '../styles/index.css';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
