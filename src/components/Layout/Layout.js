@@ -5,7 +5,7 @@ import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
 
 const LayoutContainer = styled.div`
-  margin: 3px, 4px;
+  margin: 3px 4px;
 `
 
 const Layout = ({ children }) => (
