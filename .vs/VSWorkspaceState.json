@@ -1,0 +1,16 @@
+{
+  "ExpandedNodes": [
+    "",
+    "\\src",
+    "\\src\\components",
+    "\\src\\components\\FavouriteButton",
+    "\\src\\components\\Footer",
+    "\\src\\components\\Header",
+    "\\src\\components\\Speaker",
+    "\\src\\components\\SpeakerImage",
+    "\\src\\components\\Speakers",
+    "\\src\\components\\SpeakerSearchBar"
+  ],
+  "SelectedNode": "\\src\\components\\SpeakerSearchBar\\SpeakerSearchBar.js",
+  "PreviewInSolutionExplorer": false
+}

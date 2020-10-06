@@ -46,7 +46,10 @@ const Speakers = () => {
 
     return (
         <div>
-            <SpeakersSearchBar searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            <SpeakersSearchBar
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+            />
         <div className="grid md:grid-cols-2 lg:grid-cols-3 grid-cols-1 gap-12">
                 {speakers
                     .filter((rec) => {
