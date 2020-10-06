@@ -1,8 +1,9 @@
 import React from 'react';
 
-const FavouriteButton = ({isFavorite}) => (
+const FavouriteButton = ({ isFavourite, favouriteToggle}) => (
     <div
-        className={isFavorite ? 'heartredbutton' : 'heartdarkbutton'}
+        className={isFavourite ? 'heartredbutton' : 'heartdarkbutton'}
+        onClick={favouriteToggle}
     ></div>
 );
 

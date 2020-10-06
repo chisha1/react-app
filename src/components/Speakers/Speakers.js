@@ -3,7 +3,7 @@ import Speaker from '../Speaker/Speaker';
 import SpeakersSearchBar from '../SpeakerSearchBar/SpeakerSearchBar';
 
 const Speakers = () => {
-    const speakers = [
+    const speakersArray = [
     {
       imageSrc: 'speaker-component-1124',
       name: 'Douglas Crockford',
@@ -12,7 +12,7 @@ const Speakers = () => {
       lastName: 'Crockford',
       sat: true,
       sun: false,
-      isFavorite: false,
+      isFavourite: false,
       bio:
         'Douglas Crockford discovered the JSON Data Interchange Format. He is also the author of _JavaScript: The Good Parts_. He has been called a guru, but he is actually more of a mahatma.',
     },
@@ -24,7 +24,7 @@ const Speakers = () => {
       lastName: 'Baker',
       sat: false,
       sun: true,
-      isFavorite: true,
+        isFavourite: true,
       bio:
         'Tammy has held a number of executive and management roles over the past 15 years, including VP engineering Roles at Molekule Inc., Cantaloupe Systems, E-Color, and Untangle Inc.',
     },
@@ -36,13 +36,28 @@ const Speakers = () => {
       lastName: 'Chuvyrov',
       sat: true,
       sun: false,
-      isFavorite: false,
+      isFavourite: false,
       bio:
         'Eugene Chuvyrov is  a Senior Cloud Architect at Microsoft. He works directly with both startups and enterprises to enable their solutions in Microsoft cloud, and to make Azure better as a result of this work with partners.',
     },
     ];
 
+    function toggleSpeakerFavourite(speakerRec) {
+        return {
+            ...speakerRec,
+            isFavourite: !speakerRec.isFavourite,
+        };
+    }
+
+    function favouriteToggleHandler(speakerRec) {
+        const toggledSpeakerRec = toggleSpeakerFavourite(speakerRec); //pass in original records
+        const speakerIndex = speakers.map((speaker) => speaker.id).indexOf(speakerRec.id); //get the index of the speaker to change
+        setSpeakers //create a new array of speakers, setting the state
+            ([...speakers.slice(0, speakerIndex), toggledSpeakerRec, ...speakers.slice(speakerIndex + 1)]);
+    }
+
     const [searchQuery, setSearchQuery] = useState("");
+    const [speakers, setSpeakers] = useState(speakersArray);
 
     return (
         <div>
@@ -59,7 +74,9 @@ const Speakers = () => {
                             : targetString.includes(searchQuery.toLowerCase());
                     })
                     .map((speaker) => (
-            <Speaker key={speaker.id} {...speaker} />
+                        <Speaker key={speaker.id} {...speaker}
+                            favouriteToggle={() => favouriteToggleHandler(speaker)}
+                        />
         ))}
         </div>
     </div>
