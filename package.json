@@ -4,6 +4,7 @@
   "dependencies": {
     "@fullhuman/postcss-purgecss": "2.2.0",
     "@material-ui/core": "latest",
+    "axios": "^0.20.0",
     "next": "latest",
     "postcss-preset-env": "^6.7.0",
     "prop-types": "latest",
@@ -14,11 +15,13 @@
     "tailwindcss": "^1.4.6"
   },
   "devDependencies": {
-    "babel-plugin-styled-components": "latest"
+    "babel-plugin-styled-components": "latest",
+    "json-server": "^0.16.2"
   },
   "scripts": {
     "dev": "next",
     "build": "next build",
-    "start": "next start"
+    "start": "next start",
+    "json-server": "json-server --watch db.json --port 4000 --delay 500"
   }
 }
