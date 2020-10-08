@@ -2,15 +2,15 @@
   "ExpandedNodes": [
     "",
     "\\src",
+    "\\src\\actions",
     "\\src\\components",
-    "\\src\\components\\Footer",
-    "\\src\\components\\Header",
-    "\\src\\components\\Layout",
+    "\\src\\components\\FavouriteButton",
     "\\src\\components\\Speaker",
     "\\src\\components\\SpeakerImage",
     "\\src\\components\\Speakers",
-    "\\src\\components\\SpeakerSearchBar"
+    "\\src\\components\\SpeakerSearchBar",
+    "\\src\\reducers"
   ],
-  "SelectedNode": "\\src\\components\\Speakers\\Speakers.js",
+  "SelectedNode": "\\src\\actions\\request.js",
   "PreviewInSolutionExplorer": false
 }
