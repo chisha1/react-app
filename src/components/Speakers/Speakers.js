@@ -1,32 +1,38 @@
 import React, { useState } from 'react';
+
+import SpeakerSearchBar from '../SpeakerSearchBar/SpeakerSearchBar';
 import Speaker from '../Speaker/Speaker';
-import SpeakersSearchBar from '../SpeakerSearchBar/SpeakerSearchBar';
+
 import { REQUEST_STATUS } from '../../reducers/request';
-import withRequest from '../../HOCs/withRequest';
-import withSpecialMessage from '../../HOCs/withSpecialMessage';
+
+import withRequest from '../HOCs/withRequest';
+import withSpecialMessage from '../HOCs/withSpecialMessage';
 import { compose } from 'recompose';
 
-
-const Speakers = ({ records: speakers, status, error, put, bgColour,
-    specialMessage }) => {
-
-    const favouriteToggleHandler = async (speakerRec) => {
+const Speakers = ({
+    records: speakers,
+    status,
+    error,
+    put,
+    bgColor,
+    specialMessage,
+}) => {
+    const onFavoriteToggleHandler = async (speakerRec) => {
         put({
             ...speakerRec,
-            isFavourite: !speakerRec.isFavourite
-        })
+            isFavorite: !speakerRec.isFavorite,
+        });
+    };
 
-    }
-
-    const [searchQuery, setSearchQuery] = useState("");
+    const [searchQuery, setSearchQuery] = useState('');
 
     const success = status === REQUEST_STATUS.SUCCESS;
     const isLoading = status === REQUEST_STATUS.LOADING;
     const hasErrored = status === REQUEST_STATUS.ERROR;
 
     return ( //TODO: move special message to its own component
-        <div className={ bgColour }>
-            <SpeakersSearchBar
+        <div className={bgColor}>
+            <SpeakerSearchBar
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
             />
@@ -44,7 +50,8 @@ const Speakers = ({ records: speakers, status, error, put, bgColour,
             {isLoading && <div>Loading...</div>}
             {hasErrored && (
                 <div>
-                    Loading error...
+                    Loading error... Is the json-server running? (try "npm run
+                    json-server" at terminal prompt)
                     <br />
                     <b>ERROR: {error.message}</b>
                 </div>
@@ -59,19 +66,21 @@ const Speakers = ({ records: speakers, status, error, put, bgColour,
                                 : targetString.includes(searchQuery.toLowerCase());
                         })
                         .map((speaker) => (
-                            <Speaker key={speaker.id} {...speaker}
-                                favouriteToggle={() => favouriteToggleHandler(speaker)}
+                            <Speaker
+                                key={speaker.id}
+                                {...speaker}
+                                onFavoriteToggle={() => onFavoriteToggleHandler(speaker)}
                             />
                         ))}
                 </div>
             )}
-    </div>
+        </div>
     );
 };
-//export default withSpecialMessage(
-//    withRequest('http://localhost:4000', 'speakers')(Speakers));
+// export default withSpecialMessage(
+//   withRequest('http://localhost:4000', 'speakers')(Speakers));
 
 export default compose(
     withRequest('http://localhost:4000', 'speakers'),
-    withSpecialMessage()
+    withSpecialMessage(),
 )(Speakers);
