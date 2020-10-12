@@ -1,20 +1,37 @@
-import React from 'react';
-import styled from 'styled-components'
+import React, { useContext } from 'react';
 import Header from '../Header/Header';
 import Menu from '../Menu/Menu';
 import Footer from '../Footer/Footer';
+import {
+    ThemeContext,
+    THEMELIST,
+    ThemeProvider,
+} from '../../contexts/ThemeContext';
 
-const LayoutContainer = styled.div`
-  margin: 3px 4px;
-`
+const LayoutComponent = ({ children }) => {
+    const { theme } = useContext(ThemeContext);
+
+    const classNameValue =
+        theme === THEMELIST.LIGHT
+            ? 'a'
+            : 'overflow-auto bg-gray-700';
+
+    return (
+        <div className={classNameValue}>
+            <div className="mx-4 my-3">
+                <Header />
+                <Menu />
+                {children}
+                <Footer />
+            </div>
+        </div>
+    );
+};
 
 const Layout = ({ children }) => (
-    <LayoutContainer>
-        <Header />
-        <Menu />
-        {children}
-        <Footer />
-    </LayoutContainer>
+    <ThemeProvider startingTheme={THEMELIST.LIGHT}>
+        <LayoutComponent>{children}</LayoutComponent>
+    </ThemeProvider>
 );
 
-export default Layout
+export default Layout;

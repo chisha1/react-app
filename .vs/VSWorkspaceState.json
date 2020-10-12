@@ -1,13 +1,13 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\Layout",
+    "\\src\\components\\FavouriteButton",
+    "\\src\\components\\HOCs",
+    "\\src\\components\\Speaker",
     "\\src\\components\\Speakers",
     "\\src\\components\\SpeakerSearchBar",
-    "\\src\\HOCs",
     "\\src\\reducers",
     "\\styles"
   ],

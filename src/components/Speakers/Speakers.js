@@ -1,26 +1,18 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
+import { DataContext, DataProvider } from '../../contexts/DataContext';
 
 import SpeakerSearchBar from '../SpeakerSearchBar/SpeakerSearchBar';
 import Speaker from '../Speaker/Speaker';
 
 import { REQUEST_STATUS } from '../../reducers/request';
 
-import withRequest from '../HOCs/withRequest';
-import withSpecialMessage from '../HOCs/withSpecialMessage';
-import { compose } from 'recompose';
-
-const Speakers = ({
-    records: speakers,
-    status,
-    error,
-    put,
-    bgColor,
-    specialMessage,
-}) => {
-    const onFavoriteToggleHandler = async (speakerRec) => {
+const SpeakersComponent = () => {
+    const specialMessage = '';
+    const { records: speakers, status, error, put } = useContext(DataContext);
+    const favouriteToggleHandler = async (speakerRec) => {
         put({
             ...speakerRec,
-            isFavorite: !speakerRec.isFavorite,
+            isFavourite: !speakerRec.isFavourite,
         });
     };
 
@@ -31,7 +23,7 @@ const Speakers = ({
     const hasErrored = status === REQUEST_STATUS.ERROR;
 
     return ( //TODO: move special message to its own component
-        <div className={bgColor}>
+        <div>
             <SpeakerSearchBar
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
@@ -69,7 +61,7 @@ const Speakers = ({
                             <Speaker
                                 key={speaker.id}
                                 {...speaker}
-                                onFavoriteToggle={() => onFavoriteToggleHandler(speaker)}
+                                favouriteToggle={() => favouriteToggleHandler(speaker)}
                             />
                         ))}
                 </div>
@@ -77,10 +69,13 @@ const Speakers = ({
         </div>
     );
 };
-// export default withSpecialMessage(
-//   withRequest('http://localhost:4000', 'speakers')(Speakers));
 
-export default compose(
-    withRequest('http://localhost:4000', 'speakers'),
-    withSpecialMessage(),
-)(Speakers);
+const Speakers = (props) => {
+    return (
+        <DataProvider baseUrl='http://localhost:4000' routeName='speakers'>
+            <SpeakersComponent {...props} ></SpeakersComponent>
+        </DataProvider>
+    );
+}
+
+export default Speakers

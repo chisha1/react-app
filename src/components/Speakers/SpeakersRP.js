@@ -26,10 +26,10 @@ const Speakers = ({ bgColour }) => {
                         return (
                             <Request baseUrl="http://localhost:4000" routeName="speakers">
                                 {({ records: speakers, status, error, put }) => {
-                                    const onFavoriteToggleHandler = async (speakerRec) => {
+                                    const favouriteToggleHandler = async (speakerRec) => {
                                         put({
                                             ...speakerRec,
-                                            isFavorite: !speakerRec.isFavorite,
+                                            isFavourite: !speakerRec.isFavorite,
                                         });
                                     };
                                     const success = status === REQUEST_STATUS.SUCCESS;
@@ -72,7 +72,7 @@ const Speakers = ({ bgColour }) => {
                                                             <Speaker
                                                                 key={speaker.id}
                                                                 {...speaker}
-                                                                onFavoriteToggle={() =>
+                                                                favouriteToggle={() =>
                                                                     onFavoriteToggleHandler(speaker)
                                                                 }
                                                             />
