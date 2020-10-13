@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
+    "\\pages",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\FavouriteButton",
     "\\src\\components\\HOCs",
-    "\\src\\components\\Speaker",
-    "\\src\\components\\Speakers",
-    "\\src\\components\\SpeakerSearchBar",
-    "\\src\\reducers",
+    "\\src\\components\\Layout",
+    "\\src\\components\\Menu",
+    "\\src\\contexts",
+    "\\src\\hooks",
     "\\styles"
   ],
-  "SelectedNode": "\\src\\components\\Speakers\\Speakers.js",
+  "SelectedNode": "\\src\\hooks\\useTheme.js",
   "PreviewInSolutionExplorer": false
 }

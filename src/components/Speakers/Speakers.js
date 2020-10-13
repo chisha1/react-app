@@ -9,12 +9,7 @@ import { REQUEST_STATUS } from '../../reducers/request';
 const SpeakersComponent = () => {
     const specialMessage = '';
     const { records: speakers, status, error, put } = useContext(DataContext);
-    const favouriteToggleHandler = async (speakerRec) => {
-        put({
-            ...speakerRec,
-            isFavourite: !speakerRec.isFavourite,
-        });
-    };
+    
 
     const [searchQuery, setSearchQuery] = useState('');
 
@@ -61,7 +56,7 @@ const SpeakersComponent = () => {
                             <Speaker
                                 key={speaker.id}
                                 {...speaker}
-                                favouriteToggle={() => favouriteToggleHandler(speaker)}
+                                put={put}
                             />
                         ))}
                 </div>
