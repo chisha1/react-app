@@ -9,6 +9,7 @@
     "prop-types": "latest",
     "react": "latest",
     "react-dom": "latest",
+    "react-notifications-component": "^2.4.1",
     "react-simple-img": "^2.3.9",
     "recompose": "^0.30.0",
     "styled-components": "latest",
@@ -23,6 +24,6 @@
     "dev": "next",
     "build": "next build",
     "start": "next start",
-    "json-server": "json-server --watch db.json --port 4000 --delay 5000"
+    "json-server": "json-server --watch db.json --port 4000 --delay 500"
   }
 }

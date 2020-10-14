@@ -8,6 +8,7 @@ import {
     PUT_SUCCESS,
     PUT,
 } from '../actions/request';
+import { store } from 'react-notifications-component';
 
 const useRequest = (baseUrl, routeName) => {
     const [{ records, status, error }, dispatch] = useReducer(requestReducer, {
@@ -62,10 +63,37 @@ const useRequest = (baseUrl, routeName) => {
                     type: PUT_SUCCESS,
                     record: record,
                 });
+                 //store.addNotification({
+                 //  title: 'Favorite Status Updated',
+                 //  message: `Speaker: ${record.firstName} ${record.lastName}`,
+                 //  type: 'success',
+                 //  insert: 'top',
+                 //  container: 'top-right',
+                 //  animationIn: ['animated', 'fadeIn'],
+                 //  animationOut: ['animated', 'fadeOut'],
+                 //  dismiss: {
+                 //    duration: 3000,
+                 //    onScreen: true,
+                 //  },
+                 //});
             } catch (e) {
                 dispatch({
                     type: PUT_FAILURE,
                     error: e,
+                });
+                store.addNotification({
+                    //notification types are success, danger, info, default, warning
+                    title: 'Favorite Status Update Failure.  Setting Back...',
+                    message: `Speaker: ${record.firstName} ${record.lastName}`,
+                    type: 'danger',
+                    insert: 'top',
+                    container: 'top-right',
+                    animationIn: ['animated', 'fadeIn'],
+                    animationOut: ['animated', 'fadeOut'],
+                    dismiss: {
+                        duration: 3000,
+                        onScreen: true,
+                    },
                 });
             }
         }, []),

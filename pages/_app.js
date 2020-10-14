@@ -5,6 +5,7 @@ import '../styles/index.css';
 import { ThemeProvider } from '@material-ui/styles';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import theme from '../src/theme';
+import 'react-notifications-component/dist/theme.css';
 
 class MyApp extends App {
   componentDidMount() {
