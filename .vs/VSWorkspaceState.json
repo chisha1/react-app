@@ -1,16 +1,16 @@
 {
   "ExpandedNodes": [
     "",
-    "\\pages",
+    "\\public",
+    "\\public\\speakersimages",
     "\\src",
     "\\src\\components",
-    "\\src\\components\\HOCs",
-    "\\src\\components\\Layout",
-    "\\src\\components\\Menu",
-    "\\src\\contexts",
-    "\\src\\hooks",
+    "\\src\\components\\ErrorBoundary",
+    "\\src\\components\\Speaker",
+    "\\src\\components\\SpeakerImage",
+    "\\src\\components\\Speakers",
     "\\styles"
   ],
-  "SelectedNode": "\\src\\hooks\\useTheme.js",
+  "SelectedNode": "\\src\\components\\Speaker\\Speaker.js",
   "PreviewInSolutionExplorer": false
 }
